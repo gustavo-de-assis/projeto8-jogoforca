@@ -1,0 +1,38 @@
+*{
+    border-style: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.content{
+    background-color: aquamarine;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.cima{
+    display: flex;
+    flex-direction: row;
+}
+
+.lado-direito{
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+    justify-content: space-between;
+}
+
+.embaixo{
+    width: 800px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chute{
+    display: flex;
+    flex-direction: row;
+}
