@@ -11,17 +11,17 @@ export default function App() {
                 </div>
                 <div className="lado-direito">
                     <div className="escolher-palavra">
-                        <button> Escolher Palavra</button>
+                        <div> <strong>Escolher Palavra</strong></div>
                     </div>
                     <div className="palavra-escolhida">
-                        <h1>_ _ _ _ _</h1>
+                        <h1><strong>_ _ _ _ _</strong></h1>
                     </div>
                 </div>
             </div>
             <div className="embaixo">
-                <div className="alfabeto">
-                    {alfabeto.map((a) => <button>{a}</button>)}
-                </div>
+                <ul className="alfabeto">
+                    {alfabeto.map((a) => <li className="letra-disponivel"><strong>{a.toUpperCase()}</strong></li>)}
+                </ul>
                 <div className="chute">
                     <p>Já sei a palavra!</p>
                     <input type='text' />

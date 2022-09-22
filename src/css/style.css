@@ -7,25 +7,54 @@ body{
 }
 
 .content{
-    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
     width: 1200px;
     margin: 0 auto;
 }
 
 .cima{
+    width: 100%;
     display: flex;
+
     flex-direction: row;
+    justify-content: space-between;
+
+    margin: 25px 0;
+    
+}
+
+.lado-esquerdo{
+    margin-left: 25px;
 }
 
 .lado-direito{
     display: flex;
     flex-direction: column;
+
     margin: 50px auto;
+    align-items: center;
     justify-content: space-between;
+}
+.escolher-palavra div{
+
+    background-color: lightseagreen;
+    font-size: 15px;
+    color: #fff;
+    
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.palavra-escolhida{
+    font-size: 60px;
 }
 
 .embaixo{
-    width: 800px;
+    width: 900px;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -33,6 +62,44 @@ body{
 }
 
 .chute{
+    width: 450px;
     display: flex;
     flex-direction: row;
+    margin-top: 15px;
+    justify-content: space-around;
+}
+
+.chute p{
+    margin: 10px;
+}
+
+.alfabeto{
+    display: flex;
+    flex-flow: row wrap;
+
+}
+
+.alfabeto li{
+    width: 50px;
+    height: 50px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+ 
+    border-radius: 8px;
+    
+}
+
+.letra-disponivel{
+    background-color: #888888;
+    color: #222;
+    border: solid #222 3px;
+}
+
+.letra-escolhida{
+    background-color: #aaa;
+    color: #555;
+    border: solid #555 3px;
 }
