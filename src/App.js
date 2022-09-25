@@ -13,11 +13,15 @@ function Forca() {
 
 function Palavra() {
     const [palavraSorteada, setPalavra] = useState("_ _ _ _ _");
+    const [palavraEscondida, setEscondida] = useState("");
 
     function sorteiaPalavra() {
         const valor = Math.floor(Math.random() * palavras.length);
-        const novaPalavra = palavras[valor];
-        setPalavra(novaPalavra);
+        const palavraSorteada = palavras[valor];
+        const escondePalavra = [...palavraSorteada].map((s)=>s="_ ");
+        
+        setPalavra(palavraSorteada);
+        setEscondida(escondePalavra);
     }
 
     return (
@@ -26,7 +30,7 @@ function Palavra() {
                 <div onClick={sorteiaPalavra}> <strong>Escolher Palavra</strong></div>
             </div>
             <div className="palavra-escolhida">
-                <h1><strong>{palavraSorteada}</strong></h1>
+                <h1><strong>{palavraEscondida}</strong></h1>
             </div>
         </div>
     )
