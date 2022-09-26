@@ -94,7 +94,12 @@ export default function App() {
     }
 
     function chutePalavra() {
-        if (textoInput === palavraSorteada) {
+        const chuteMinusculo = textoInput.toLowerCase();
+        const chuteSemAcento = chuteMinusculo.normalize('NFKD').replace(/[^\w\s.-_\/]/g, '');
+        const palavraSemAcento = palavraSorteada.normalize('NFKD').replace(/[^\w\s.-_\/]/g, '');
+
+        if (textoInput === palavraSorteada || chuteMinusculo === palavraSorteada ||
+            chuteSemAcento === palavraSemAcento) {
             setAcerto(palavraSorteada.length);
             setCorLetras("acertou");
         }
