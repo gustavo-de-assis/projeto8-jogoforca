@@ -8,14 +8,21 @@ export default function App() {
         "g", "h", "i", "j", "k", "l", "m", "n", "o",
         "p", "q", "r", "s", "t", "u", "v", "w", "x",
         "y", "z"];
-
+    
+    
     
     const [palavraSorteada, setPalavra] = useState("");
     const [palavraEscondida, setEscondida] = useState("");
+    
     const [botaoPalavra, setBotaoPalavra] = useState(true);
     const [letrasAlfabeto, setAlfabeto] = useState(false);
+    
     const [letraEscolhida, setLetra] = useState([]);
     const [habilitaLetras, setEstilo] = useState("letra-desabilitada");
+    
+    const [qtdErro, setErro] = useState(0);
+    const [qtdAcerto, setAcerto] = useState(0);
+
 
     function sorteiaPalavra() {
         if (botaoPalavra) {
@@ -45,14 +52,16 @@ export default function App() {
         const palavra = [...palavraSorteada]
         const escondida = palavraEscondida;
 
-        if(palavra.includes(botao) && letrasAlfabeto){
+        if(palavra.includes(botao) && letrasAlfabeto && qtdErro < 5){
             const indice = palavra.map((l,i)=> l.includes(botao) ? escondida[i] = botao : false);
 
             console.log(indice);
             console.log(escondida);
             console.log('acertou');
+            setAcerto((qtdAcerto + 1))
         }else{
             console.log('errou');
+            setErro((qtdErro + 1))
         }
         escolheuLetra(botao, i);
     }
@@ -62,7 +71,7 @@ export default function App() {
             <div className="cima">
                 <div className="lado-esquerdo">
                     <div className="estado-forca">
-                        <img src="./assets/forca0.png" />
+                        <img src={`./assets/forca${qtdErro}.png`} />
                     </div>
                 </div>
                 <div className="lado-direito">
