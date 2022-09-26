@@ -122,10 +122,11 @@ body{
 
 @media (max-width: 720px){
     .content{
-        width: 70%;
+        width: 100%;
     }
     .lado-esquerdo img{
-        width: 60%;
+        width: 300px;
+        align-self: flex-start;
     }
     .lado-direito{
         width: 50%;
