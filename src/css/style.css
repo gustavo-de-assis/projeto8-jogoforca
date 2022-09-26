@@ -119,3 +119,31 @@ body{
 .escondido{
     display: none;
 }
+
+@media (max-width: 720px){
+    .content{
+        width: 70%;
+    }
+    .lado-esquerdo img{
+        width: 60%;
+    }
+    .lado-direito{
+        width: 50%;
+        height: 150px;
+        justify-content: flex-start;
+    
+    }
+
+    .palavra-escolhida{
+        font-size: 30px;
+        justify-self: flex-end;
+        padding-top: 70px;
+    }
+    .embaixo{
+        width: 100%;
+    }
+    .alfabeto{
+        justify-content: space-evenly;
+    }
+
+}
