@@ -116,3 +116,6 @@ body{
 .acertou{
     color: #228322;
 }
+.escondido{
+    display: none;
+}
