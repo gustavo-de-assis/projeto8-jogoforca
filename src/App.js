@@ -29,22 +29,6 @@ export default function App() {
     const [qtdAcerto, setAcerto] = useState(0);
 
     const [fimDeJogo, setFim] = useState(true);
-    let jogarNovamente;
-
-    function resetaJogo() {
-        setPalavra("");
-        setEscondida("");
-        setBotaoPalavra(true);
-        setAlfabeto(false);
-        setLetra([]);
-        setEstilo("letra-desabilitada");
-        setTextoInput("");
-        setCorLetras("");
-        setCorLetras("");
-        setAcerto(0);
-        setErro(0);
-    }
-
 
     function sorteiaPalavra() {
         if (botaoPalavra) {
@@ -99,13 +83,6 @@ export default function App() {
                 }
             }
             escolheuLetra(botao, i);
-
-            if (fimDeJogo === true) {
-                jogarNovamente = prompt("Jogar novamente? Sim ou Não?");
-                if (jogarNovamente.toLowerCase() === "sim") {
-                    resetaJogo();
-                }
-            }
         }
     }
 
@@ -130,10 +107,6 @@ export default function App() {
         }
         setEscondida(palavraSorteada);
         setFim(true);
-        jogarNovamente = prompt("Jogar novamente? Sim ou Não?");
-        if (jogarNovamente.toLowerCase() === "sim") {
-            resetaJogo();
-        }
     }
 
     return (
