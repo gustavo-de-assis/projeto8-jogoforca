@@ -12,8 +12,10 @@ export default function App() {
     
     const [palavraSorteada, setPalavra] = useState("");
     const [palavraEscondida, setEscondida] = useState("");
-    const [botaoPalavra, setEstado] = useState(true);
-    const [letrasAlfabeto, setLetras] = useState(false);
+    const [botaoPalavra, setBotaoPalavra] = useState(true);
+    const [letrasAlfabeto, setAlfabeto] = useState(false);
+    const [letraEscolhida, setLetra] = useState([]);
+    const [habilitaLetras, setEstilo] = useState("letra-desabilitada");
 
     function sorteiaPalavra() {
         if (botaoPalavra) {
@@ -21,15 +23,33 @@ export default function App() {
             const palavraSorteada = palavras[valor];
             const escondePalavra = [...palavraSorteada].map((s) => s = "_ ");
 
-            setEstado(false);
-            setLetras(true);
             setPalavra(palavraSorteada);
             setEscondida(escondePalavra);
+            iniciaJogo();
 
         }
     }
 
-  
+    function iniciaJogo(){
+        setBotaoPalavra(false);
+        setAlfabeto(true);
+        setEstilo("letra-habilitada");
+    }
+
+    function escolheuLetra(botao, i){
+        if (!letraEscolhida.includes(i) && letrasAlfabeto)
+            setLetra([...letraEscolhida, i]);
+    }
+
+    function chuteLetra(botao, i){
+        if([...palavraSorteada].includes(botao)){
+            console.log('acertou');
+        }else{
+            console.log('errou');
+        }
+        escolheuLetra(botao, i);
+    }
+
     return (
         <div className="content">
             <div className="cima">
@@ -48,8 +68,10 @@ export default function App() {
                 </div>
             </div>
             <div className="embaixo">
-                <ul className="alfabeto">
-                    {alfabeto.map((a) => <li className={letrasAlfabeto ? "letra-disponivel":"letra-indisponivel"} ><strong>{a.toUpperCase()}</strong></li>)}
+                <ul className= "alfabeto" >
+                    {alfabeto.map((a, i) => <li onClick={()=> chuteLetra(a,i)} 
+                    className={letraEscolhida.includes(i) ? "letra-escolhida" : habilitaLetras}>
+                        <strong>{a.toUpperCase()}</strong></li>)}
                 </ul>
                 <div className="chute">
                     <p>Já sei a palavra!</p>

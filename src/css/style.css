@@ -92,14 +92,20 @@ body{
     
 }
 
-.letra-disponivel{
+.letra-habilitada{
     background-color: #888888;
     color: #222;
     border: solid #222 3px;
 }
 
-.letra-indisponivel{
-    background-color: #aaa;
-    color: #555;
+.letra-desabilitada{
+    background-color: #cacaca;
+    color: #666;
+    border: solid #555 3px;
+}
+
+.letra-escolhida{
+    background-color: #66ccaa;
+    color: #224466;
     border: solid #555 3px;
 }
