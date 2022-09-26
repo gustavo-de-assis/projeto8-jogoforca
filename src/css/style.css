@@ -109,3 +109,10 @@ body{
     color: #224466;
     border: solid #555 3px;
 }
+
+.errou {
+    color: #ff3333;
+}
+.acertou{
+    color: #228322;
+}

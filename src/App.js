@@ -19,6 +19,8 @@ export default function App() {
     
     const [letraEscolhida, setLetra] = useState([]);
     const [habilitaLetras, setEstilo] = useState("letra-desabilitada");
+    const [corLetras, setCorLetras] = useState ("");
+
     
     const [qtdErro, setErro] = useState(0);
     const [qtdAcerto, setAcerto] = useState(0);
@@ -49,19 +51,28 @@ export default function App() {
     }
 
     function chuteLetra(botao, i){
-        const palavra = [...palavraSorteada]
+        const palavra = [...palavraSorteada.normalize('NFKD').replace(/[^\w\s.-_\/]/g, '')]; //removendo acentos para checagem
         const escondida = palavraEscondida;
 
-        if(palavra.includes(botao) && letrasAlfabeto && qtdErro < 5){
-            const indice = palavra.map((l,i)=> l.includes(botao) ? escondida[i] = botao : false);
+        if(palavra.includes(botao) && letrasAlfabeto) {
+            const indice = palavra.map((l,i)=> l.includes(botao) ? escondida[i] = palavraSorteada[i] : false);
 
             console.log(indice);
             console.log(escondida);
             console.log('acertou');
             setAcerto((qtdAcerto + 1))
+
+            if(qtdAcerto === palavra.length){
+                setCorLetras("acertou")
+            }
         }else{
             console.log('errou');
             setErro((qtdErro + 1))
+            if(qtdErro === 6){
+                setEscondida(palavraSorteada);
+                setCorLetras("errou");
+                setAlfabeto(false);
+            }
         }
         escolheuLetra(botao, i);
     }
@@ -79,7 +90,7 @@ export default function App() {
                         <div onClick={sorteiaPalavra}> <strong>Escolher Palavra</strong></div>
                     </div>
                     <div className="palavra-escolhida">
-                        <h1><strong>{palavraEscondida}</strong></h1>
+                        <h1 className={corLetras} ><strong>{palavraEscondida}</strong></h1>
                     </div>
                 </div>
             </div>
