@@ -19,6 +19,8 @@ export default function App() {
     
     const [letraEscolhida, setLetra] = useState([]);
     const [habilitaLetras, setEstilo] = useState("letra-desabilitada");
+
+    const [textoInput, setTextoInput] = useState("");
     const [corLetras, setCorLetras] = useState ("");
 
     
@@ -55,12 +57,14 @@ export default function App() {
         const escondida = palavraEscondida;
 
         if(palavra.includes(botao) && letrasAlfabeto) {
+            let acerto = 0;
             const indice = palavra.map((l,i)=> l.includes(botao) ? escondida[i] = palavraSorteada[i] : false);
+            palavra.map((l,i)=> l.includes(botao) ? acerto++ : false);
 
             console.log(indice);
             console.log(escondida);
             console.log('acertou');
-            setAcerto((qtdAcerto + 1))
+            setAcerto((qtdAcerto + acerto));
 
             if(qtdAcerto === palavra.length){
                 setCorLetras("acertou")
@@ -75,6 +79,17 @@ export default function App() {
             }
         }
         escolheuLetra(botao, i);
+    }
+
+    function inputChute(e){
+        setTextoInput(e.target.value)
+    }
+
+    function chutePalavra(){
+        if(textoInput === palavraSorteada)
+            console.log('acertou miserávi');
+        else
+            console.log('errou miseravi');
     }
 
     return (
@@ -102,8 +117,8 @@ export default function App() {
                 </ul>
                 <div className="chute">
                     <p>Já sei a palavra!</p>
-                    <input type='text' />
-                    <button>Chutar</button>
+                    <input type='text' onChange={inputChute}/>
+                    <button onClick={chutePalavra}>Chutar</button>
                 </div>
             </div>
 
