@@ -37,12 +37,19 @@ export default function App() {
     }
 
     function escolheuLetra(botao, i){
-        if (!letraEscolhida.includes(i) && letrasAlfabeto)
+        if (!letraEscolhida.includes(i))
             setLetra([...letraEscolhida, i]);
     }
 
     function chuteLetra(botao, i){
-        if([...palavraSorteada].includes(botao)){
+        const palavra = [...palavraSorteada]
+        const escondida = palavraEscondida;
+
+        if(palavra.includes(botao) && letrasAlfabeto){
+            const indice = palavra.map((l,i)=> l.includes(botao) ? escondida[i] = botao : false);
+
+            console.log(indice);
+            console.log(escondida);
             console.log('acertou');
         }else{
             console.log('errou');
