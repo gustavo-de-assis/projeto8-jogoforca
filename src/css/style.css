@@ -122,7 +122,7 @@ body{
 
 @media (max-width: 720px){
     .content{
-        width: 100%;
+        width: 95%;
     }
     .lado-esquerdo img{
         width: 300px;
@@ -138,7 +138,7 @@ body{
     .palavra-escolhida{
         font-size: 30px;
         justify-self: flex-end;
-        padding-top: 70px;
+        padding-top: 200px;
     }
     .embaixo{
         width: 100%;
