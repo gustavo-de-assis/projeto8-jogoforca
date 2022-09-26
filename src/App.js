@@ -19,7 +19,7 @@ export default function App() {
 
     const [letraEscolhida, setLetra] = useState([]);
     const [habilitaLetras, setEstilo] = useState("letra-desabilitada");
-    
+
 
     const [textoInput, setTextoInput] = useState("");
     const [corLetras, setCorLetras] = useState("");
@@ -29,6 +29,21 @@ export default function App() {
     const [qtdAcerto, setAcerto] = useState(0);
 
     const [fimDeJogo, setFim] = useState(true);
+    let jogarNovamente;
+
+    function resetaJogo() {
+        setPalavra("");
+        setEscondida("");
+        setBotaoPalavra(true);
+        setAlfabeto(false);
+        setLetra([]);
+        setEstilo("letra-desabilitada");
+        setTextoInput("");
+        setCorLetras("");
+        setCorLetras("");
+        setAcerto(0);
+        setErro(0);
+    }
 
 
     function sorteiaPalavra() {
@@ -59,7 +74,7 @@ export default function App() {
     function chuteLetra(botao, i) {
         const palavra = [...palavraSorteada.normalize('NFKD').replace(/[^\w\s.-_\/]/g, '')]; //removendo acentos para checagem
         const escondida = palavraEscondida;
-        
+
         if (!fimDeJogo && !letraEscolhida.includes(botao)) {
             if (palavra.includes(botao)) {
                 let acerto = 0;
@@ -74,7 +89,7 @@ export default function App() {
                     setFim(true);
                 }
             } else {
-                let erroAtual = qtdErro+1;
+                let erroAtual = qtdErro + 1;
                 setErro(erroAtual)
                 if (erroAtual === 6) {
                     setEscondida(palavraSorteada);
@@ -85,12 +100,18 @@ export default function App() {
             }
             escolheuLetra(botao, i);
 
+            if (fimDeJogo === true) {
+                jogarNovamente = prompt("Jogar novamente? Sim ou Não?");
+                if (jogarNovamente.toLowerCase() === "sim") {
+                    resetaJogo();
+                }
+            }
         }
     }
 
     function inputChute(e) {
         setTextoInput(e.target.value)
-        
+
     }
 
     function chutePalavra() {
@@ -109,6 +130,10 @@ export default function App() {
         }
         setEscondida(palavraSorteada);
         setFim(true);
+        jogarNovamente = prompt("Jogar novamente? Sim ou Não?");
+        if (jogarNovamente.toLowerCase() === "sim") {
+            resetaJogo();
+        }
     }
 
     return (
@@ -135,7 +160,7 @@ export default function App() {
                         ) ? "letra-escolhida" : habilitaLetras}>
                         <strong>{a.toUpperCase()}</strong></li>)}
                 </ul>
-                <div className={`chute ${fimDeJogo ? "escondido": ""}` }>
+                <div className={`chute ${fimDeJogo ? "escondido" : ""}`}>
                     <p>Já sei a palavra!</p>
                     <input type='text' onChange={inputChute} />
                     <button onClick={chutePalavra}>Chutar</button>
